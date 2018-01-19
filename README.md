@@ -18,10 +18,11 @@ It has been tested on Centos and Ubuntu, and on Debian Linux variants. Please le
 This has been tested on Centos7 and Debian GNU/Linux 9 (stretch)
 
 ```{r, engine='bash', count_lines}
-curl https://raw.githubusercontent.com/id3as/ffmpeg-libvpx-HDR-static/master/build_static_ffmpeg_centos-debian.sh?token=Acu
+$ curl https://raw.githubusercontent.com/id3as/ffmpeg-libvpx-HDR-static/master/build_static_ffmpeg_centos-debian.sh?token=Acu
 yMglrnvNbhgPCTK_xio9Zy1q6Uqjtks5aawjRwA%3D%3D > ffmpeg-build-script.sh
-chmod 766 ffmpeg-build-script.sh
-./ffmpeg-build-script.sh```
+$ chmod 766 ffmpeg-build-script.sh
+$ ./ffmpeg-build-script.sh
+```
 
 Takes about 45 mins.
 
