@@ -13,6 +13,21 @@ This ffmpeg can be downloaded, transferred to other machines of similar architec
 
 It has been tested on Centos and Ubuntu, and on Debian Linux variants. Please let us know if you have success with it on other architectures.
 
+#Execution 
+
+This has been tested on Centos7 and Debian GNU/Linux 9 (stretch)
+
+'''$ curl https://raw.githubusercontent.com/id3as/ffmpeg-libvpx-HDR-static/master/build_static_ffmpeg_centos-debian.sh?token=Acu
+yMglrnvNbhgPCTK_xio9Zy1q6Uqjtks5aawjRwA%3D%3D > ffmpeg-build-script.sh
+$ chmod 766 ffmpeg-build-script.sh
+$ ./ffmpeg-build-script.sh'''
+
+Takes about 45 mins.
+
+
+
+# About
+
 We will be manually refreshing the binary included in the repo from time to time as further stable releases of either FFMpeg or libvpx are made available which offer improvements and prove to be stable.
 
 While the script should ‘just work’ and is offered ‘as-is’ and unsupported to the community the team at [www.id3as.co.uk](www.id3as.co.uk) will be monitoring GitHub and if we can help with any issues we will try to find some time to improve the script, so please do feed back on GitHub.
