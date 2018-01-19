@@ -502,7 +502,7 @@ Build successfully completed: ffmpeg installed in $PREFIX
 
 
 
-test -r /etc/redhat_release && do_yum
+test -r /etc/redhat-release && do_yum
 test -r /etc/debian_version && do_apt
 
 check_yasm || install_yasm || { echo "Failed to build yasm"; exit 3; }
