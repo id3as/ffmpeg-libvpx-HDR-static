@@ -24,9 +24,14 @@ $ chmod 766 ffmpeg-build-script.sh
 $ ./ffmpeg-build-script.sh
 ```
 
-Takes about 45 mins.
+Takes about 45 mins on the tested machines.
 
+On many architectures you can replace the last line with this to make the build considerably faster:
 
+```{r, engine='bash', count_lines}
+MAKEOPTS=-j4 ffmpeg-build-script.sh
+```
+But we don't consider that to be tested widely enough to clearly define which environments will universally support it. Might be worth a test on your own architecture.
 
 # About
 
