@@ -3,7 +3,7 @@ A script to build a static binary of FFmpeg optimised for libvpx (HDR 10bit) enc
 
 As part of some work producing some developer documentation for the webm team at Google we came to the conclusion that getting a stable, known build of FFmpeg with libvpx in place was non-trivial.
 
-This script was developed on a GCP Centos7 n1-standard-4 Virtual Machine.
+This script was developed on a GCP Centos7 n1-standard-4 Virtual Machine. It was then modified to support debian too, and run on a a GCP Debian n4-standard-4 VM.
 
 By default it grabs a recent, defined and stable release of FFmpeg and libvpx, and the latest releases of many of the other elements that are useful in decoding a source video. The script can be modified at the top to force it to compile the very latest (or any other specified) version of FFmpeg or libvpx. See the comments in the script for more information on this.
 
