@@ -7,11 +7,11 @@ This script was developed on a GCP Centos7 n1-standard-4 Virtual Machine. It was
 
 By default it grabs a recent, defined and stable release of FFmpeg and libvpx, and the latest releases of many of the other elements that are useful in decoding a source video. The script can be modified at the top to force it to compile the very latest (or any other specified) version of FFmpeg or libvpx. See the comments in the script for more information on this.
 
-It builds a standalone static version of ffmpeg. An example output binary created with the script is colocated in this repository for convenience if you don’t want to run the script yourself, but just ‘need’ a static FFmpeg release right now.
+It builds a standalone static version of ffmpeg optimised for your chipset and for 10-bit HDR encoding with libvpx. 
 
-This ffmpeg can be downloaded, transferred to other machines of similar architecture, and simply executed. If will handle all the latest capabilities of libvpx, including 10 bit HDR encoding.
+This ffmpeg can be distributed to other machines of similar architecture, and simply executed. 
 
-It has been tested on Centos and Ubuntu, and on Debian Linux variants. Please let us know if you have success with it on other architectures.
+It has been tested on Centos 7 and Ubuntu 16.04, and on Debian 9 Linux variants. Please let us know if you have success with it on other architectures.
 
 # Execution 
 
@@ -23,7 +23,7 @@ $ chmod 766 ffmpeg-build-script.sh
 $ ./ffmpeg-build-script.sh
 ```
 
-Takes about 45 mins on the tested machines.
+Takes about 25 mins to build on the tested machines.
 
 On many architectures you can replace the last line with this to make the build considerably faster:
 
@@ -33,8 +33,6 @@ MAKEOPTS=-j4 ffmpeg-build-script.sh
 But we don't consider that to be tested widely enough to clearly define which environments will universally support it. Might be worth a test on your own architecture.
 
 # About
-
-We will be manually refreshing the binary included in the repo from time to time as further stable releases of either FFMpeg or libvpx are made available which offer improvements and prove to be stable.
 
 While the script should ‘just work’ and is offered ‘as-is’ and unsupported to the community the team at [www.id3as.co.uk](www.id3as.co.uk) will be monitoring GitHub and if we can help with any issues we will try to find some time to improve the script, so please do feed back on GitHub.
 
