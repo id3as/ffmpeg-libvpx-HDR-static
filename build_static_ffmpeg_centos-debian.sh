@@ -372,7 +372,7 @@ function build_x264 {
         git pull
         make distclean || :
     else
-        git clone http://git.videolan.org/git/x264
+        git clone https://code.videolan.org/videolan/x264.git
         cd $d
     fi
 
