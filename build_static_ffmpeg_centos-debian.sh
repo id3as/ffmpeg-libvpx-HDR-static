@@ -5,7 +5,7 @@ set -e
 # component revisions to check out:
 vpx_rev="HEAD"
 x264_rev="HEAD"
-x265_rev="tip"
+x265_rev="HEAD"
 fdk_aac_rev="HEAD"
 ffmpeg_rev="HEAD"
 # each will be set to the actual commit sha (git describe --abbrev)
@@ -147,11 +147,11 @@ function install_yasm {
 }
 
 function install_nasm {
-    local s=nasm-2.13.02
+    local s=nasm-2.14.02
     local t=$s.tar.bz2
 
     (cd ffmpeg_sources
-     curl -O -L http://www.nasm.us/pub/nasm/releasebuilds/2.13.02/$t
+     curl -O -L http://www.nasm.us/pub/nasm/releasebuilds/2.14.02/$t
      tar xjf $t
      (cd $s
       ./autogen.sh
@@ -197,7 +197,7 @@ function check_yasm {
 function check_nasm {
     if which nasm >/dev/null 2>&1; then
         local v=$(nasm --version | awk '/^NASM / { print $3 }')
-        if is_version_ok "$v" "2.13.0"; then
+        if is_version_ok "$v" "2.14.0"; then
             echo "found nasm version $v"
         else
             echo "found nasm version $v, which is too old"
@@ -387,19 +387,19 @@ function build_x264 {
 function build_x265 {
     echo "
 - - - -  x265"
-    local d=x265
+    local d=x265_git
 
     cd ffmpeg_sources
     if test -d $d; then
         cd $d
         rm -rf build/linux/*
     else
-        hg clone https://bitbucket.org/multicoreware/x265
+        git clone https://bitbucket.org/multicoreware/x265_git
         cd $d
     fi
 
-    hg update -r "$x265_rev"
-    export x265_rev=$(hg id --id)
+    git checkout "$x265_rev" || return 1
+    export x265_rev=$(git describe --always --abbrev HEAD)
 
     cd build/linux
     cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$PREFIX" -DENABLE_SHARED:bool=off ../../source
@@ -498,10 +498,6 @@ Build successfully completed: ffmpeg installed in $PREFIX
 " && cd ../..
 }
 
-
-
-
-
 test -r /etc/redhat-release && do_yum
 test -r /etc/debian_version && do_apt
 
@@ -513,6 +509,7 @@ build_lame
 build_opus
 build_libogg
 build_libvorbis
+
 # some others are pulled newest
 build_x264 || exit 2
 build_x265 || exit 2
